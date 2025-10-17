@@ -50,9 +50,9 @@ namespace Soccer.Controllers
         // POST: Players/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Age,Position,TeamId")] Players players)
+        public async Task<IActionResult> Create([Bind("Id,Name,BirthYear,Position,TeamId")] Players players)
         {
-            if (players.Age <= 0)
+            if (DateTime.Now.Year - players.BirthYear <= 0)
                 ModelState.AddModelError("Age", "Возраст должен быть больше нуля");
             if (ModelState.IsValid)
             {
@@ -84,13 +84,13 @@ namespace Soccer.Controllers
         // POST: Players/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Age,Position,TeamId")] Players players)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,BirthYear,Position,TeamId")] Players players)
         {
             if (id != players.Id)
             {
                 return NotFound();
             }
-            if (players.Age <= 0)
+            if (DateTime.Now.Year - players.BirthYear <= 0)
                 ModelState.AddModelError("Age", "Возраст должен быть больше нуля");
             if (ModelState.IsValid)
             {

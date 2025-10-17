@@ -10,9 +10,11 @@ namespace Soccer.Models
         }
     
         public int Id { get; set; }
-        [Required(ErrorMessage = "Поле должно быть установлено")]
+        [Required(ErrorMessage = "The field must be set")]
+        [Display(Name = "Club name")]
         public string Name { get; set; }
-        [Required(ErrorMessage = "Поле должно быть установлено")]
+        [Required(ErrorMessage = "The field must be set")]
+        [Display(Name = "Club coach")]
         public string Coach { get; set; }
         public ICollection<Players>? Players { get; set; }
     }
